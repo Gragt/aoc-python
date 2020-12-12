@@ -1,10 +1,6 @@
 import re
 
-
-def file_to_tuple():
-    file = open("02.txt", "r")
-    lines = [line.rstrip("\n") for line in file.readlines()]
-    return tuple(lines)
+import helpers
 
 
 def parser(my_tuple):
@@ -32,4 +28,4 @@ def counter2(parsed_info):
     return counter
 
 
-print(counter2(parser(file_to_tuple())))
+print(counter2(parser(helpers.file_to_tuple("02.txt"))))
