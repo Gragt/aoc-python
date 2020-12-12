@@ -3,24 +3,24 @@ import re
 import helpers
 
 
-def parser(my_tuple):
+def parser(data):
     regex = re.compile(r"(\d{1,2})-(\d{1,2}) ([a-z]{1}): ([a-z]+)")
-    info = [regex.search(item).groups() for item in my_tuple]
-    return tuple(info)
+    parsed_data = [regex.search(item).groups() for item in data]
+    return tuple(parsed_data)
 
 
-def counter1(parsed_info):
+def get_answer1(parsed_data):
     counter = 0
-    for item in parsed_info:
-        lower, upper, letter, password = item
-        if password.count(letter) >= int(lower) and password.count(letter) <= int(upper):
+    for item in parsed_data:
+        low, up, letter, password = item
+        if password.count(letter) >= int(low) and password.count(letter) <= int(up):
             counter += 1
     return counter
 
 
-def counter2(parsed_info):
+def get_answer2(parsed_data):
     counter = 0
-    for item in parsed_info:
+    for item in parsed_data:
         pos1, pos2, letter, password = item
         check = {password[int(pos1) - 1], password[int(pos2) - 1]}
         if letter in check and len(check) == 2:
@@ -28,4 +28,4 @@ def counter2(parsed_info):
     return counter
 
 
-print(counter2(parser(helpers.file_to_tuple("02.txt"))))
+print(get_answer2(parser(helpers.linereader("02.txt"))))
