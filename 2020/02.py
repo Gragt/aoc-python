@@ -1,9 +1,12 @@
+"""Puzzle 02 solutions."""
+
 import re
 
 import helpers
 
 
 def parser(data):
+    """Parse input data and return a tuple."""
     regex = re.compile(r"(\d{1,2})-(\d{1,2}) ([a-z]{1}): ([a-z]+)")
     parsed_data = [
         (
@@ -18,6 +21,7 @@ def parser(data):
 
 
 def get_answer1(parsed_data):
+    """Get part 1 answer."""
     counter = 0
     for item in parsed_data:
         low, up, letter, password = item
@@ -27,6 +31,7 @@ def get_answer1(parsed_data):
 
 
 def get_answer2(parsed_data):
+    """Get part 1 answer."""
     counter = 0
     for item in parsed_data:
         pos1, pos2, letter, password = item

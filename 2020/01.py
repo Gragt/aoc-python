@@ -1,7 +1,10 @@
+"""Puzzle 01 solutions."""
+
 import helpers
 
 
 def get_answers(data):
+    """Add puzzle 01 numbers together and return answer."""
     data = tuple(map(int, data))
     for item1 in data:
         for item2 in data[data.index(item1) + 1:]:
