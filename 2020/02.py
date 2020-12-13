@@ -41,4 +41,5 @@ def get_answer2(parsed_data):
     return counter
 
 
-print(get_answer2(parser(helpers.linereader("02.txt"))))
+parsed_data = parser(helpers.linereader("02.txt"))
+print(f"{get_answer1(parsed_data)}, {get_answer2(parsed_data)}")
