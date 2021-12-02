@@ -10,13 +10,7 @@ def detect_depth(depths):
     Inputs: depths, a list of ints.
     Returns: an int.
     """
-    old_depth = depths[0]
-    counter = 0
-    for depth in depths:
-        if depth > old_depth:
-            counter += 1
-        old_depth = depth
-    return counter
+    return sum(x < y for x, y in zip(depths, depths[1:]))
 
 
 def sliding_window(depths):
@@ -26,14 +20,9 @@ def sliding_window(depths):
     Inputs: depths, a list of ints.
     Returns: an int.
     """
-    old_window = depths[0] + depths[1] + depths[2]
-    counter = 0
-    for x in range(len(depths) - 2):
-        window = depths[x] + depths[x + 1] + depths[x + 2]
-        if window > old_window:
-            counter += 1
-        old_window = window
-    return counter
+    return detect_depth(
+        [sum(window) for window in zip(depths, depths[1:], depths[2:])]
+    )
 
 
 print(
